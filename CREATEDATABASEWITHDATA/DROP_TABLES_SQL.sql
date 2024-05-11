@@ -34,8 +34,6 @@ drop TABLE EQUIPMENT_MANUFACTURER cascade constraints ;
 
 drop TABLE EQUIPMENT cascade constraints ;
 
-drop TABLE TICKET_TRANSACTION cascade constraints ;
-
 drop TABLE COWORK_SPACE cascade constraints ;
 
 drop TABLE COWORK_SPACE_EQUIPMENT cascade constraints ;

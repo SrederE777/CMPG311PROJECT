@@ -1,14 +1,5 @@
--- Master Script (master_script.sql)
-
--- Run other SQL create table scripts
 @DROP_TABLES_SQL.sql;
 @create_table_statements.sql;
-
--- Run other SQL create trigger scripts
---@DROP_TRIGGERS_SQL.sql;
---@CREATE_EVENT_PK_INC_TRIGGER.sql
-
--- Run other SQL scripts with relative paths
 @ADDRESS_DATA.sql;
 @BRANCH_DATA.sql;
 @COWORK_SPACE_DATA.sql
@@ -30,4 +21,3 @@
 @PRODUCTION_DATA.sql;
 @ORDERS_DATA.sql;
 @EVENT_TRANSACTION_DATA.sql;
-
