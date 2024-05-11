@@ -12,7 +12,6 @@ with open(full_path, "r") as file:
 my_list = sql_commands.splitlines()
 non_empty_list = list(filter(None, my_list))
 cleaned_statement = [item.replace(";", "") for item in non_empty_list]
-
 try:
     con = cx_Oracle.Connection(user="TESTUSER", password="cmpg311", dsn ="localhost:1521/xe")
     print("Database version:", con.version)
@@ -21,12 +20,8 @@ try:
         print(x)
         cursor.execute(x)
         con.commit()
-    
-    
-    
-
 except cx_Oracle.DatabaseError as e:
-    print(f"Error executing SQL commands: {e}")
+    print(f"Error executing SQL: {e}")
 finally:
     cursor.close()
     con.close()
