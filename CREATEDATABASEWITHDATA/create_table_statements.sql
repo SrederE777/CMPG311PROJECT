@@ -97,7 +97,7 @@ CREATE TABLE EMPLOYEE (
   employee_date_of_employement DATE,
   employee_cell_num VARCHAR2(255),
   employee_email VARCHAR2(255),
-  employee_contact_id INT
+  employee_contract_id INT
 );
 
 CREATE TABLE EMPLOYEE_CONTRACT (
@@ -223,7 +223,7 @@ ALTER TABLE EMPLOYEE ADD FOREIGN KEY (branch_id) REFERENCES BRANCH (branch_id);
 
 ALTER TABLE EMPLOYEE ADD FOREIGN KEY (employee_manager_id) REFERENCES EMPLOYEE (employee_id);
 
-ALTER TABLE EMPLOYEE ADD FOREIGN KEY (employee_contact_id) REFERENCES EMPLOYEE_CONTRACT (employee_contract_id);
+ALTER TABLE EMPLOYEE ADD FOREIGN KEY (employee_contract_id) REFERENCES EMPLOYEE_CONTRACT (employee_contract_id);
 
 ALTER TABLE EVENT ADD FOREIGN KEY (branch_id) REFERENCES BRANCH (branch_id);
 
