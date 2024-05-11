@@ -1,5 +1,0 @@
--- Show all 
-
--- SORTING
-SELECT 
-
