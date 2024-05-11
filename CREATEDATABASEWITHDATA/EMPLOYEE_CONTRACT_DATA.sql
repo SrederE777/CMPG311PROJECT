@@ -1,6 +1,5 @@
 -- Inserting sample data for a coffee shop franchise into EMPLOYEE_CONTRACT table
 
--- Generate 75 entries
 INSERT INTO EMPLOYEE_CONTRACT (employee_contract_id, contract_job_title, contract_salary, contract_job_description, contract_type, contract_notice_period, contract_paid_leave, contract_unpaid_leave)
 VALUES
 -- Baristas
