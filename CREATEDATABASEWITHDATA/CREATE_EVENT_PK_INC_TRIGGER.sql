@@ -1,0 +1,8 @@
+
+CREATE OR REPLACE TRIGGER "TESTUSER"."EVENT_TRG" 
+    BEFORE INSERT ON "TESTUSER".EVENT
+    FOR EACH ROW
+    BEGIN
+        new.EVENT_ID := event_seq.nextval;
+    END;
+/
