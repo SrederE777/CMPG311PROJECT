@@ -6,7 +6,7 @@ import sqlite3
 def execute_query(query):
     try:
         # Connect to your database
-        connection = sqlite3.connect('Hier kom die path van ons query file')
+        connection = sqlite3.connect(r'queries.sql')
         cursor = connection.cursor()
 
         # Execute the query
