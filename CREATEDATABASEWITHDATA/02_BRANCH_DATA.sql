@@ -1,0 +1,3 @@
+INSERT INTO branch (branch_id, branch_name, address_id, branch_cafe, branch_cowork, branch_event, branch_date_of_purchase) VALUES (1, 'Dekker', 1, 'y', 'y', 'y', TO_DATE('2023-08-10', 'YYYY-MM-DD'));
+INSERT INTO branch (branch_id, branch_name, address_id, branch_cafe, branch_cowork, branch_event,branch_date_of_purchase) VALUES (2, 'Valley Mall', 9, 'y', 'y', 'n',  TO_DATE('2022-10-22', 'YYYY-MM-DD'));
+INSERT INTO branch (branch_id, branch_name, address_id, branch_cafe, branch_cowork, branch_event,branch_date_of_purchase) VALUES (3, 'Sunset Mall', 19, 'y', 'n', 'y', TO_DATE('2021-12-15', 'YYYY-MM-DD'));
