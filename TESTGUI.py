@@ -25,16 +25,16 @@ def fetch_data(table):
     table_window.title("Oracle Data Table")
 
     # Create a Treeview widget in the new window
-    table = ttk.Treeview(table_window, columns=columnNames)
-    n = 0
-    for column in columnNames:
-        table.heading(f"#{n}", text=column[0].replace("_", " "))
-        n = n + 1
+    table = ttk.Treeview(table_window, columns=columnNames, show = "headings")
+    
+    for n,column in enumerate(columnNames):
+        table.heading(f"#{n+1}", text=column[0].replace("_", " "))
+   
     
 
     # Insert data into the Treeview
-    for row in data:
-        table.insert("", "end", values=row)
+    for i,row in enumerate(data):
+        table.insert("", i, values=row)
 
 
     scrollbar = ttk.Scrollbar(table_window, orient="vertical", command=table.yview)
