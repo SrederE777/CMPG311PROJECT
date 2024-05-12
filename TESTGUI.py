@@ -101,5 +101,49 @@ def show_selected_item():
 show_selected_button = tk.Button(root, text="Show Selected Item", command=show_selected_item)
 show_selected_button.pack()
 
+def querry_data():
+    # Connect to Oracle database
+    con = cx_Oracle.Connection(user="TESTUSER", password="cmpg311", dsn ="localhost:1521/xe")
+
+    # Create a cursor
+    cur = con.cursor()
+    #underscoreTable = table.replace(" ", "_")
+    # Execute your query (replace with your actual query)
+    cur.execute("SELECT m.menu_item_name, SUM(ca.MENU_ITEM_AMOUNT*m.menu_item_price) AS TotalRevenuePerItem FROM menu_item m JOIN cafe_transaction ca ON m.MENU_ITEM_ID = ca.MENU_ITEM_ID GROUP BY m.MENU_ITEM_NAME")
+    data = cur.fetchall()
+    
+    #cur.execute(f"SELECT column_name FROM user_tab_columns WHERE table_name = '{underscoreTable}'")
+    #columnNames = cur.fetchall()
+    #for column in columnNames:
+    #    print(column)
+    # Close the connection
+    con.close()
+
+    # Create a new window for displaying the table
+    table_window = tk.Toplevel(root)
+    table_window.title("Oracle querry Table")
+    test = {('column1',),('column2',)}
+    # Create a Treeview widget in the new window
+    table = ttk.Treeview(table_window, columns= test ,show = "headings")
+
+    # Insert data into the Treeview
+    for n,column in enumerate(test):
+        table.heading(f"#{n+1}", text=column[0])   
+
+    # Insert data into the Treeview
+    for i,row in enumerate(data):
+        table.insert("", i, values=row)
+
+
+    scrollbar = ttk.Scrollbar(table_window, orient="vertical", command=table.yview)
+    table.configure(yscrollcommand=scrollbar.set)
+    scrollbar.pack(side="right", fill="y")
+
+    # Pack the Treeview
+    table.pack(fill="both", expand=True)
+    # Replace with your actual database connection details
+
+show_selected_button = tk.Button(root, text="Show querry Item", command=querry_data())
+show_selected_button.pack()
 root.mainloop()
 
