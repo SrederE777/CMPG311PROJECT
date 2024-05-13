@@ -2,7 +2,12 @@ import cx_Oracle
 import tkinter as tk
 from tkinter import  Button, ttk
 import os
-
+def treeview_sort_column(tv, col, reverse):
+    l = [(tv.set(k, col), k) for k in tv.get_children('')]
+    l.sort(reverse=reverse)
+    for index, (val, k) in enumerate(l):
+        tv.move(k, '', index)
+    tv.heading(col, command=lambda: treeview_sort_column(tv, col, not reverse))
 def fetch_data(table):
     
     # Connect to Oracle database
@@ -30,7 +35,7 @@ def fetch_data(table):
     table = ttk.Treeview(table_window, columns=columnNames, show = "headings")
     
     for n,column in enumerate(columnNames):
-        table.heading(f"#{n+1}", text=column[0].replace("_", " "))
+        table.heading(f"#{n+1}", text=column[0].replace("_", " "), command=lambda c=column: treeview_sort_column(table, c, False))
    
     # Insert data into the Treeview
     for i,row in enumerate(data):
@@ -69,7 +74,7 @@ def querry_data(path):
 
     # Set column headings
     for n,column in enumerate(column_names):
-        table.heading(f"#{n+1}", text=column.replace("_", " "))
+        table.heading(f"#{n+1}", text=column.replace("_", " "), command=lambda c=column: treeview_sort_column(table, c, False))
 
     # Insert data into the Treeview
     for i, row in enumerate(data):
