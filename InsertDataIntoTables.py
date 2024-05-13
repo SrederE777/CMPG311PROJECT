@@ -30,6 +30,7 @@ def insertDataIntoTables():
                                 print(f"Executed: {command.strip()}")
                             except cx_Oracle.DatabaseError as e:
                                 error_list.append(f"Error executing SQL: {e} for command {command.strip()}")
+            
         if error_list:
             print("\nErrors encountered:")
             for error in error_list:
