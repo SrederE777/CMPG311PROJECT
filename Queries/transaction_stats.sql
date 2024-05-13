@@ -3,9 +3,10 @@ SELECT COUNT(*) AS total_transactions,
        MAX(transaction_total_amount) AS max_transaction_amount
 FROM TRANSACTIONS;
 
-SELECT COUNT(*) AS NumCafeTransactions
-        FROM CAFE_TRANSACTION ct
-        JOIN TRANSACTIONS t on t.TRANSACTION_ID = ct.transaction_id
-        
-        
-        AVG(transaction_total)
+SELECT COUNT(*) AS NumCafeTransactions, AVG(T.TRANSACTION_TOTAL_AMOUNT)
+FROM CAFE_TRANSACTION ct
+JOIN TRANSACTIONS t on t.TRANSACTION_ID = ct.transaction_id;
+
+SELECT COUNT(*) NumCoworkTransactions, AVG(T.TRANSACTION_TOTAL_AMOUNT)
+FROM COWORK_TRANSACTION cwt
+JOIN TRANSACTIONS t ON t.TRANSACTION_ID = cwt.TRANSACTION_ID;
