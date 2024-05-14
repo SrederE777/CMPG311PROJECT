@@ -1,0 +1,14 @@
+SELECT item1, item2, co_occurrence
+FROM (
+    SELECT mi1.MENU_ITEM_NAME AS item1, mi2.MENU_ITEM_NAME AS item2,
+           COUNT(*) AS co_occurrence
+    FROM TRANSACTIONS t
+    JOIN CAFE_TRANSACTION ct1 ON t.TRANSACTION_ID = ct1.TRANSACTION_ID
+    JOIN CAFE_TRANSACTION ct2 ON t.TRANSACTION_ID = ct2.TRANSACTION_ID
+    JOIN MENU_ITEM mi1 ON ct1.MENU_ITEM_ID = mi1.MENU_ITEM_ID
+    JOIN MENU_ITEM mi2 ON ct2.MENU_ITEM_ID = mi2.MENU_ITEM_ID
+    WHERE ct1.MENU_ITEM_ID <> ct2.MENU_ITEM_ID  -- Filter out same item orders
+    GROUP BY mi1.MENU_ITEM_NAME, mi2.MENU_ITEM_NAME
+    ORDER BY co_occurrence DESC
+)
+WHERE ROWNUM <= 10;  -- Limit to top 10 results
