@@ -14,9 +14,10 @@ CREATE TABLE TRANSACTIONS (
 );
 
 CREATE TABLE EVENT_TRANSACTION (
-  transaction_id INT PRIMARY KEY,
+  transaction_id INT NOT NULL,
   event_id INT,
   event_person_paying VARCHAR2(255)
+  PRIMARY KEY (transaction_id,event_id)
 );
 
 
